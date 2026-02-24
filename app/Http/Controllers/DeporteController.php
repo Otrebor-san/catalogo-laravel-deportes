@@ -28,11 +28,11 @@ class DeporteController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required',
-            'descripcion' => 'required',
-            'categoria' => 'required',
-            'pais_origen' => 'required',
-            'cantidad_jugadores' => 'required|integer'
+            'nombre' => 'required|string|max:100',
+            'descripcion' => 'required|string|max:255',
+            'categoria' => 'required|string|max:100',
+            'pais_origen' => 'required|string|max:100',
+            'cantidad_jugadores' => 'required|integer|min:1'
         ]);
 
         Deporte::create([
@@ -57,12 +57,11 @@ class DeporteController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nombre' => 'required',
-            'descripcion' => 'required',
-            'categoria' => 'required',
-            'pais_origen' => 'required',
-            'cantidad_jugadores' => 'required|integer',
-            'estado' => 'required'
+            'nombre' => 'required|string|max:100',
+            'descripcion' => 'required|string|max:255',
+            'categoria' => 'required|string|max:100',
+            'pais_origen' => 'required|string|max:100',
+            'cantidad_jugadores' => 'required|integer|min:1'
         ]);
 
         $deporte = Deporte::findOrFail($id);
