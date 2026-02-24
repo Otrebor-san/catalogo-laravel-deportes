@@ -9,6 +9,12 @@
     </a>
 </div>
 
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
 <div class="mb-3">
     <a href="{{ route('deportes.index') }}" class="btn btn-dark btn-sm">Todos</a>
     <a href="{{ route('deportes.index', ['estado' => 'A']) }}" class="btn btn-success btn-sm">Activos</a>
