@@ -21,6 +21,24 @@
     <a href="{{ route('deportes.index', ['estado' => 'I']) }}" class="btn btn-danger btn-sm">Inactivos</a>
 </div>
 
+<form method="GET" action="{{ route('deportes.index') }}" class="mb-3">
+    <div class="row">
+        <div class="col-md-4">
+            <input 
+                type="text" 
+                name="buscar" 
+                class="form-control" 
+                placeholder="Buscar por nombre..."
+                value="{{ request('buscar') }}">
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary">
+                🔍 Buscar
+            </button>
+        </div>
+    </div>
+</form>
+
 <table class="table table-bordered table-hover bg-white shadow-sm">
     <thead class="table-dark">
         <tr>

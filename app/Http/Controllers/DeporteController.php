@@ -9,13 +9,19 @@ class DeporteController extends Controller
 {
     public function index(Request $request)
     {
-        $estado = $request->estado;
+        $query = Deporte::query();
 
-        if ($estado) {
-            $deportes = Deporte::where('estado', $estado)->get();
-        } else {
-            $deportes = Deporte::all();
+        // Filtro por estado
+        if ($request->estado) {
+            $query->where('estado', $request->estado);
         }
+
+        // Búsqueda por nombre
+        if ($request->buscar) {
+            $query->where('nombre', 'like', '%' . $request->buscar . '%');
+        }
+
+        $deportes = $query->get();
 
         return view('deportes.index', compact('deportes'));
     }
